@@ -200,15 +200,15 @@ flashToggleButton.addEventListener('click', async () => {
         const capabilities = track.getCapabilities();
         
         if (!capabilities.torch) {
-            console.log('Flash not available');
+            console.log('Torch (flash) not available');
             return;
         }
         
-        const mode = track.getSettings().torch ? 'off' : 'on';
-        await track.applyConstraints({ advanced: [{ torch: mode }] });
-        flashToggleButton.classList.toggle('active', mode === 'on');
+        const mode = track.getSettings().torch ? false : true;
+        await track.applyConstraints({ torch: mode });
+        flashToggleButton.classList.toggle('active', mode);
     } catch (error) {
-        console.log('Error toggling flash', error);
+        console.error('Error toggling flash', error);
     }
 });
 
