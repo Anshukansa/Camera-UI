@@ -1,0 +1,174 @@
+body {
+  font-family: 'SF Pro', sans-serif;
+  margin: 0;
+  overflow: hidden;
+  background-color: #282c34;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+}
+
+h1, h2 {
+  text-align: center;
+  margin: 0;
+  color: #fff;
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+h2 {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ios-button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+  width: 200px;
+  height: 40px;
+}
+
+.ios-button:hover {
+  background-color: #0069d9;
+}
+
+.portrait-container {
+  display: none; /* Ensure this is set to 'none' */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
+#video-container {
+  width: 90%;
+  max-width: 400px;
+  max-height: 80%;
+  aspect-ratio: 9 / 16; /* Maintain a portrait aspect ratio */
+  padding: 0; /* Remove padding */
+  border: none; /* Remove border */
+  box-shadow: none; /* Remove box-shadow */
+  border-radius: 0; /* Remove border-radius */
+  background-color: transparent; /* Make background transparent */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60px;
+  position: relative; /* Added for positioning top and bottom buttons */
+}
+
+#player {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #111;
+  box-shadow: 0 0 50px #111;
+  border-radius: 10px;
+  object-fit: cover; /* Ensure the video covers the element */
+}
+
+.top-buttons {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.bottom-buttons {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+#capture-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+#gallery-button, #capture-button, #switch-camera, #flash-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #fff;
+  cursor: pointer;
+  transition: all .15s ease-in-out;
+  opacity: 0.8;
+  outline: none;
+  font-size: 24px;
+  color: black;
+  margin: 0 10px; 
+}
+
+#end-session {
+  width: 300px; /* make the button width same as the player width */
+  margin-top: -30px; /* adjust the margin from top as needed */
+}
+
+#output {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  .button-container {
+    flex-direction: column;
+  }
+  .ios-button {
+    font-size: 14px;
+    padding: 8px 16px;
+    width: 150px;
+    height: 35px;
+  }
+  #video-container {
+    width: 95%;
+    max-width: 300px;
+  }
+}
