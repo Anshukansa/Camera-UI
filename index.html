@@ -28,13 +28,27 @@
             </div>
             <div class="bottom-buttons">
                 <button id="gallery-button" title="Gallery"><i class="fas fa-images"></i></button>
-                <button id="capture-button" title="Take a picture"><i class="fas fa-camera"></i></button>
+                <button id="photo-capture-button" title="Take a picture"><i class="fas fa-camera"></i></button>
+                <button id="video-capture-button" title="Take a picture"><i class="fas fa-video"></i></button>
             </div>
             
         </div>
         <button id="end-session" class="ios-button">End Session</button>
         <canvas id="output"></canvas>
     </div>
+
+    <!-- Add this after the portrait-container div -->
+<div class="gallery-popup hidden" id="gallery-popup">
+    <div class="popup-header">
+      <button id="back-button" class="ios-button"><i class="fas fa-arrow-left"></i> Back</button>
+      <h2 style="display: inline-block;">Gallery</h2>
+    </div>
+    <div class="popup-content">
+      <!-- You can add your gallery content here, e.g. images, etc. -->
+      
+      <!-- Add your gallery content here -->
+    </div>
+  </div>
 
     <script src="script.js"></script>
 </body>
