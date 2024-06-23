@@ -10,6 +10,10 @@ const captureButton = document.getElementById('photo-capture-button');
 const canvas = document.getElementById('output');
 const context = canvas.getContext('2d');
 const popupContent = document.querySelector('.popup-content');
+const switchCameraButton = document.getElementById('switch-camera');
+const flashToggleButton = document.getElementById('flash-toggle');
+let cameraStream;
+let currentCamera = 'environment'; // 'environment' for back camera, 'user' for front camera
 
 let db;
 
@@ -188,3 +192,51 @@ function displayGalleryPhotos() {
 function showError(message) {
     alert(message); // Simple error handling for demonstration
 }
+
+// Toggle Flash
+flashToggleButton.addEventListener('click', () => {
+    const track = cameraStream.getVideoTracks()[0];
+    const capabilities = track.getCapabilities();
+    if (capabilities.torch) {
+        const mode = track.getSettings().torch ? 'off' : 'on';
+        track.applyConstraints({ advanced: [{ torch: mode }] });
+        flashToggleButton.classList.toggle('active', mode === 'on');
+    } else {
+        console.log('Flash not available');
+    }
+});
+
+// Switch Camera
+switchCameraButton.addEventListener('click', async () => {
+    const videoConstraints = {
+        video: {
+            facingMode: { exact: currentCamera === 'environment' ? 'user' : 'environment' }
+        }
+    };
+
+    try {
+        cameraStream = await navigator.mediaDevices.getUserMedia(videoConstraints);
+        player.srcObject = cameraStream;
+        currentCamera = currentCamera === 'environment' ? 'user' : 'environment';
+    } catch (error) {
+        console.log('Error switching camera', error);
+    }
+});
+
+// Function to start the default camera (back camera)
+async function startDefaultCamera() {
+    const videoConstraints = {
+        video: {
+            facingMode: 'environment'
+        }
+    };
+
+    try {
+        cameraStream = await navigator.mediaDevices.getUserMedia(videoConstraints);
+        player.srcObject = cameraStream;
+    } catch (error) {
+        console.log('Error starting default camera', error);
+    }
+}
+// Call the function to start the default camera when the page loads
+startDefaultCamera();

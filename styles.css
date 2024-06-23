@@ -153,6 +153,11 @@ h2 {
   margin: 0 10px; 
 }
 
+#flash-toggle.active {
+  background-color: #f0ad4e; /* Change to a color indicating active state */
+}
+
+
 #end-session {
   width: 300px; /* make the button width same as the player width */
   margin-top: -30px; /* adjust the margin from top as needed */
