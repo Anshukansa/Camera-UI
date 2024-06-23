@@ -122,14 +122,20 @@ h2 {
   padding: 0 20px;
 }
 
-#capture-button {
+#photo-capture-button {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
 
+#video-capture-button {
+  position: absolute;
+  left: 60%;
+  transform: translateX(-50%);
+}
 
-#gallery-button, #capture-button, #switch-camera, #flash-toggle {
+
+#gallery-button, #photo-capture-button, #video-capture-button,#switch-camera, #flash-toggle {
   display: flex;
   justify-content: center;
   align-items: center;
