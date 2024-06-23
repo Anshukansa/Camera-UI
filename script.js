@@ -194,15 +194,21 @@ function showError(message) {
 }
 
 // Toggle Flash
-flashToggleButton.addEventListener('click', () => {
-    const track = cameraStream.getVideoTracks()[0];
-    const capabilities = track.getCapabilities();
-    if (capabilities.torch) {
+flashToggleButton.addEventListener('click', async () => {
+    try {
+        const track = cameraStream.getVideoTracks()[0];
+        const capabilities = track.getCapabilities();
+        
+        if (!capabilities.torch) {
+            console.log('Flash not available');
+            return;
+        }
+        
         const mode = track.getSettings().torch ? 'off' : 'on';
-        track.applyConstraints({ advanced: [{ torch: mode }] });
+        await track.applyConstraints({ advanced: [{ torch: mode }] });
         flashToggleButton.classList.toggle('active', mode === 'on');
-    } else {
-        console.log('Flash not available');
+    } catch (error) {
+        console.log('Error toggling flash', error);
     }
 });
 
@@ -238,5 +244,6 @@ async function startDefaultCamera() {
         console.log('Error starting default camera', error);
     }
 }
+
 // Call the function to start the default camera when the page loads
 startDefaultCamera();
