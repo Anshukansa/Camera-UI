@@ -162,6 +162,46 @@ h2 {
   display: none;
 }
 
+.gallery-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  display: none; /* Hide by default */
+}
+
+.gallery-popup.show {
+  display: block;
+}
+.popup-header {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the h2 element */
+  position: relative; /* Allows absolute positioning of the button */
+}
+
+.popup-header button {
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  left: 20px; /* Move the button to the left */
+  vertical-align: middle;
+}
+
+.popup-header h2 {
+  font-size: 30px;
+  margin: 0; /* Remove default margin */
+}
+
+.popup-content {
+  padding: 20px;
+}
+
+
 @media only screen and (max-width: 768px) {
   .container {
     padding: 10px;

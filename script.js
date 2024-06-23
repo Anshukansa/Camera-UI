@@ -1,3 +1,8 @@
+// Get the gallery button and popup elements
+const galleryButton = document.getElementById('gallery-button');
+const popup = document.getElementById('gallery-popup');
+const backButton = document.getElementById('back-button');
+
 document.getElementById('start-session').addEventListener('click', function() {
     document.querySelector('.container').style.display = 'none';
     document.getElementById('portrait-container').style.display = 'flex';
@@ -27,3 +32,13 @@ function startVideoStream() {
         console.log(dataUrl); // For demonstration purposes
     });
 }
+
+// Add event listener to the gallery button
+galleryButton.addEventListener('click', () => {
+    popup.classList.add('show');
+  });
+  
+  // Add event listener to the back button
+  backButton.addEventListener('click', () => {
+    popup.classList.remove('show');
+  });
