@@ -124,13 +124,13 @@ h2 {
 
 #photo-capture-button {
   position: absolute;
-  left: 45%;
+  left: 50%;
   transform: translateX(-50%);
 }
 
 #video-capture-button {
   position: absolute;
-  left: 55%;
+  left: 65%;
   transform: translateX(-50%);
 }
 
